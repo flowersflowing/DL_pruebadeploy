@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import firebase from 'firebase';
 export default {
   name: 'Login',
   data() {
@@ -29,14 +30,20 @@ export default {
   },
   methods: {
     login() {
+      if(this.form.email && this.form.password && this.form.password >= 6) {
+        console.log('está funcionando');
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider)
+        .then(resp => {
+          console.log(resp);
+        })
+      }
     },
     onReset(event) {
       event.preventDefault()
       // Reset our form values
       this.form.email = ''
       this.form.name = ''
-      this.form.food = null
-      this.form.checked = []
       // Trick to reset/clear native browser form validation state
       this.show = false
       this.$nextTick(() => {
