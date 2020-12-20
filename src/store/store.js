@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-// import { db } from '../main';
+import { db } from '../main';
 
 Vue.use(Vuex)
 
@@ -19,5 +19,20 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    traerData({commit}) {
+      db.collection('juguetes').get().then(resp => {
+        let arreglo = [];
+        resp.forEach(el => {
+          arreglo.push({
+            code: el.data().code,
+            name: el.data().name,
+            stock: el.data().stock,
+            price: el.data().price,
+            // id: el.data().id
+          })
+        });
+        commit('cambiarJuguetes', arreglo);
+      });
+    }
   }
 })

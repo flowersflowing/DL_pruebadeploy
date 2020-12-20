@@ -7,7 +7,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import Element from 'element-ui';
 import firebase from 'firebase';
-import firebaseConfig from '../src/config/firebaseConfig';
+import { firebaseConfig } from './config/firebaseConfig';
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
@@ -15,6 +15,7 @@ Vue.use(Element);
 Vue.config.productionTip = false;
 
 firebase.initializeApp(firebaseConfig);
+export const db = firebase.firestore();
 
 new Vue({
   router,

@@ -38,8 +38,20 @@ export default {
           console.log(resp);
           this.$router.push('/productos');
         }).catch(error => {
-          console.error(error.code);
+          if(error.code == 'auth/wrong-password') {
+            console.log('contraseña inválida');
+          }else if(error.code == 'auth/invalid-email') {
+            console.log('correo inválido');
+          }else if(error.code == 'auth/user-disabled') {
+            console.log('usuario no corresponde');
+          }else {
+            this.errors(error);
+            console.log('usuario no encontrado');
+            this.$router.push('/');
+          }
         })
+      }else {
+        console.log('error');
       }
     },
     onReset(event) {
