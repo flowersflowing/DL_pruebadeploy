@@ -12,6 +12,7 @@
       <b-button type="submit" variant="primary">Submit</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
+    <b-button variant="danger" @click="loginGoogle">Ingresar por Google</b-button>
   </div>
 </template>
 
@@ -31,11 +32,9 @@ export default {
   methods: {
     login() {
       if(this.form.email && this.form.password) {
-        console.log('entrando a login');
-        var provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithPopup(provider)
+        firebase.auth().signInWithEmailAndPassword(this.form.email, this.form.password)
         .then(resp => {
-          console.log(resp);
+          console.log(resp.user.email);
           this.$router.push('/productos');
         }).catch(error => {
           if(error.code == 'auth/wrong-password') {
@@ -51,8 +50,18 @@ export default {
           }
         })
       }else {
-        console.log('error por situación imprevista en login');
+        console.log('error por situación imprevista en login por correo');
       }
+    },
+    loginGoogle() {
+        let provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider)
+        .then(resp => {
+          console.log(resp);
+          this.$router.push('/productos');
+        }).catch(error => {
+          console.log(error);
+        })
     },
     onReset(event) {
       event.preventDefault()
