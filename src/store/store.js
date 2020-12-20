@@ -20,9 +20,9 @@ export default new Vuex.Store({
   },
   actions: {
     traerData({commit}) {
+      let arreglo = [];
       db.collection('juguetes').onSnapshot(resp => {
         console.log(arreglo);
-        let arreglo = [];
         resp.forEach(el => {
           arreglo.push({
             code: el.data().code,
