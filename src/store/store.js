@@ -29,7 +29,7 @@ export default new Vuex.Store({
             name: el.data().name,
             stock: el.data().stock,
             price: el.data().price,
-            // id: el.data().id
+            id: el.data().id
           })
         });
         commit('cambiarJuguetes', arreglo);
