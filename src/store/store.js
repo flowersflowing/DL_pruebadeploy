@@ -34,16 +34,16 @@ export default new Vuex.Store({
         });
         commit('cambiarJuguetes', arreglo);
       });
+    },
+    agregarJuguetes(context, data) {
+      db.collection('juguetes').add({
+        code: data.code,
+        name: data.name,
+        stock: data.stock,
+        price: data.price,
+      }).then(resp => {
+        console.log(resp);
+      });    
     }
-  },
-  agregarJuguetes(context, data) {
-    db.collection('juguetes').add({
-      code: data().code,
-      name: data().name,
-      stock: data().stock,
-      price: data().price,
-    }).then(resp => {
-      console.log(resp);
-    })
   }
 })
