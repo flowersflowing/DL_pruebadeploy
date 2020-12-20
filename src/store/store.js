@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import { db } from '../main';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -20,7 +20,8 @@ export default new Vuex.Store({
   },
   actions: {
     traerData({commit}) {
-      db.collection('juguetes').get().then(resp => {
+      db.collection('juguetes').onSnapshot(resp => {
+        console.log(arreglo);
         let arreglo = [];
         resp.forEach(el => {
           arreglo.push({

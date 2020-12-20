@@ -30,8 +30,8 @@ export default {
   },
   methods: {
     login() {
-      if(this.form.email && this.form.password && this.form.password >= 6) {
-        console.log('está funcionando');
+      if(this.form.email && this.form.password) {
+        console.log('entrando a login');
         var provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
         .then(resp => {
@@ -45,13 +45,13 @@ export default {
           }else if(error.code == 'auth/user-disabled') {
             console.log('usuario no corresponde');
           }else {
-            this.errors(error);
+            Error(error);
             console.log('usuario no encontrado');
-            this.$router.push('/');
+            // this.$router.push('/');
           }
         })
       }else {
-        console.log('error');
+        console.log('error por situación imprevista en login');
       }
     },
     onReset(event) {

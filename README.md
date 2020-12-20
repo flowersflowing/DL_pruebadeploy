@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+#### Usuario con el que hay que loguearse para poder loguearse con cuenta google
+usuario: usuario@hola.es
+clave: 123456
