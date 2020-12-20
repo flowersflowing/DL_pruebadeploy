@@ -29,7 +29,7 @@ export default new Vuex.Store({
             name: el.data().name,
             stock: el.data().stock,
             price: el.data().price,
-            id: el.data().id
+            // id: el.data().id
           })
         });
         commit('cambiarJuguetes', arreglo);
@@ -38,10 +38,10 @@ export default new Vuex.Store({
   },
   agregarJuguetes(context, data) {
     db.collection('juguetes').add({
-      code: data.code,
-      name: data.name,
-      stock: data.stock,
-      price: data.price
+      code: data().code,
+      name: data().name,
+      stock: data().stock,
+      price: data().price,
     }).then(resp => {
       console.log(resp);
     })

@@ -36,7 +36,28 @@ export default {
     },
     methods: {
         agregar() {
-
+            if(this.form.code && this.form.name && this.form.stock && this.form.price) {
+                this.$confirm('¿Deseas agregar nuevo producto?', 'Informativo', {
+                    confirmButton: 'Sí',
+                    cancelButton: 'No',
+                    type: 'primary',
+                    center: true
+                }).then(() => {
+                    this.$message({
+                        type: 'info',
+                        message: 'El producto ha sido agregado'
+                    });
+                    this.$store.dispatch('agregarJuguetes', this.form);
+                    this.$router.push('/productos');
+                }).catch(() => {
+                    this.$message({
+                        type: 'danger',
+                        message: 'El producto no ha sido creado'
+                    });
+                });
+            }else {
+                console.log("No está funcionando");
+            }
         },
         onReset(event) {
             event.preventDefault()
