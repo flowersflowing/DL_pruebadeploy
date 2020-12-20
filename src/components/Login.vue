@@ -36,6 +36,9 @@ export default {
         firebase.auth().signInWithPopup(provider)
         .then(resp => {
           console.log(resp);
+          this.$router.push('/productos');
+        }).catch(error => {
+          console.error(error.code);
         })
       }
     },
