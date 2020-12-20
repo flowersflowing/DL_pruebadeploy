@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login container my-5">
     <b-form @submit.prevent="login" @reset="onReset" v-if="show">
       <b-form-group id="input-group-1" label="Correo electrónico de google:" label-for="input-1" description="We'll never share your email with anyone else.">
         <b-form-input id="input-1" v-model="form.email" type="email" placeholder="usuario@gmail.com" required></b-form-input>
@@ -8,11 +8,14 @@
       <b-form-group id="input-group-2" label="Clave:" label-for="input-2">
         <b-form-input id="input-2" v-model="form.password" type="password" placeholder="Ingresa tu nombre" required></b-form-input>
       </b-form-group>
-
-      <b-button type="submit" variant="primary">Submit</b-button>
-      <b-button type="reset" variant="danger">Reset</b-button>
+      <div class="my-5">
+        <b-button type="submit" variant="primary">Submit</b-button>
+        <b-button class="m-2" type="reset" variant="danger">Reset</b-button>        
+      </div>
     </b-form>
-    <b-button variant="danger" @click="loginGoogle">Ingresar por Google</b-button>
+    <div class="text-center">
+      <b-button size="lg" variant="info" @click="loginGoogle">Ingresar por Google</b-button>      
+    </div>
   </div>
 </template>
 
