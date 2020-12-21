@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { db } from '../main';
+import router from '../router/router';
 
 Vue.use(Vuex);
 
@@ -50,6 +51,17 @@ export default new Vuex.Store({
         console.log('producto eliminado');
       }).catch(error => {
         console.log(error);
+      });
+    },
+    editar(context, data) {
+      db.collection('juguetes').doc(data.id).update({
+        code: data.code,
+        name: data.name,
+        stock: data.stock,
+        price: data.price
+      }).then(() => {
+        console.log('Está editando');
+        router.replace('/editar');
       });
     }
   }
