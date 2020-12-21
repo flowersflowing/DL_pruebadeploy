@@ -29,7 +29,7 @@ export default new Vuex.Store({
             name: el.data().name,
             stock: el.data().stock,
             price: el.data().price,
-            // id: el.data().id
+            id: el.id
           })
         });
         commit('cambiarJuguetes', arreglo);
@@ -44,6 +44,13 @@ export default new Vuex.Store({
       }).then(resp => {
         console.log(resp);
       });    
+    },
+    eliminarJuguetes(context, id) {
+      db.collection('juguetes').doc(id).delete().then(() => {
+        console.log('producto eliminado');
+      }).catch(error => {
+        console.log(error);
+      });
     }
   }
 })

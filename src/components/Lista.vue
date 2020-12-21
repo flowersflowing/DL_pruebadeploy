@@ -61,6 +61,26 @@ export default {
                 console.log(error);
             });
         },
+        handleDelete(id) {
+            this.$confirm('Seguro que desea eliminar el ítem', 'Advertencia', {
+                confirmButtonText: 'Sí',
+                cancelButtonText: 'No',
+                type: 'primary',
+                center: true
+            }).then(() => {
+                this.$message({
+                    type: 'info',
+                    message: 'El producto ha sido eliminado'
+                });
+                this.$store.dispatch('eliminarJuguetes', id);
+                // this.$router.push('/productos');
+            }).catch(() => {
+                this.$message({
+                    type: 'warning',
+                    message: 'El producto no ha sido eliminado'
+                });
+            });
+        }
     }
 }
 </script>
