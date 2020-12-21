@@ -21,6 +21,12 @@ const routes = [
     name: 'Agregar',
     component: () => import(/* webpackChunkName: "agregar" */ '../views/Agregar.vue')
     //debería hacerlo con guards
+  },
+  {
+    path: '/editar',
+    name: 'Editar',
+    component: () => import(/* webpackChunkName: "editar" */ '../views/Editar.vue')
+    //debería hacerlo con guards
   }
 ]
 
