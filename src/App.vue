@@ -3,7 +3,8 @@
     <div id="nav">
       <router-link to="/">Ingresar</router-link> |
       <router-link to="/productos">Productos</router-link> |
-      <router-link to="/agregar">Agregar</router-link>
+      <router-link to="/agregar">Agregar</router-link> |
+      <router-link to="/editar">Editar</router-link>
     </div>
     <router-view/>
   </div>
